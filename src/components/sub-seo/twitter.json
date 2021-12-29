@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sub_seo_twitters",
+  "info": {
+    "displayName": "twitter",
+    "icon": "kiwi-bird"
+  },
+  "options": {},
+  "attributes": {
+    "site": {
+      "type": "string"
+    },
+    "handle": {
+      "type": "string"
+    },
+    "cardType": {
+      "type": "enumeration",
+      "enum": [
+        "summary",
+        "summary_large_image",
+        "app",
+        "player"
+      ]
+    }
+  }
+}

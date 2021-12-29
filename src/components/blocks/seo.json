@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_blocks_seos",
+  "info": {
+    "displayName": "seo",
+    "icon": "cog",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "noindex": {
+      "type": "boolean",
+      "default": false
+    },
+    "canonical": {
+      "type": "string"
+    },
+    "disableGooglebot": {
+      "type": "boolean",
+      "default": false
+    },
+    "nofollow": {
+      "type": "boolean",
+      "default": false
+    },
+    "openGraph": {
+      "displayName": "openGraph",
+      "type": "component",
+      "repeatable": false,
+      "component": "sub-seo.open-graph"
+    },
+    "twitter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sub-seo.twitter"
+    }
+  }
+}
