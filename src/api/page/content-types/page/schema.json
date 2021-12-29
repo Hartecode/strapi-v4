@@ -32,6 +32,21 @@
       "components": [
         "blocks.seo"
       ]
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "parent"
+    },
+    "static_path": {
+      "type": "json"
     }
   }
 }
