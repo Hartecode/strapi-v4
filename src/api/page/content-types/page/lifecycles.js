@@ -1,4 +1,5 @@
 'use strict';
+
 /**
  * Updated children pages paths and static path 
  * @param {string} parentId - parent id
