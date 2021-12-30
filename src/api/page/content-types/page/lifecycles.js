@@ -77,19 +77,18 @@ async function generateFullPath(data) {
 module.exports =  {
   beforeCreate: async (event) => {
     let { data } = event.params;
-    data = await generateFullPath(data);
+    console.log('beforeCreate', event)
+
+    event.params.data = await generateFullPath(data);
   },
   beforeUpdate: async (event) => {
-    let { where, data } = event.params;
-
-    if (typeof where.id === 'number') {
-      event.params.data = await generateFullPath(data);
-    }
+    let { data } = event.params;
+    event.params.data = await generateFullPath(data);
   },
-  afterCreate: async (event) => {
-    let { where } = event.params;
-    const id = typeof where.id === 'number'? where.id : where.id?.id;
-    await updateChildrenPaths(id);
+  afterCreate: async ({ result }) => {
+    if (result.children?.length > 0) {
+      await updateChildrenPaths(result.id);
+    }
   },
   afterUpdate: async (event) => {
     let { where } = event.params;
