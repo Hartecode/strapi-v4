@@ -1,0 +1,67 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import styled from 'styled-components';
+
+// add styling here to edit the content look
+// https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/content-styles.html
+const Wrapper = styled.div`
+  .ck-editor__main {
+    min-height: 200px;
+    > div {
+      min-height: 200px;
+    }
+    
+    > .ck.ck-content {
+      color: #424242;
+    }
+  }
+`;
+
+const configuration = {
+  toolbar: [
+    'heading',
+    '|',
+    'bold',
+    'italic',
+    'link',
+    'bulletedList',
+    'numberedList',
+    '|',
+    'indent',
+    'outdent',
+    '|',
+    'blockQuote',
+    'insertTable',
+    'mediaEmbed',
+    'undo',
+    'redo',
+  ],
+};
+
+const Editor = ({ onChange, name, value, disabled }) => {
+  return (
+    <Wrapper>
+      <CKEditor
+        editor={ClassicEditor}
+        config={configuration}
+        data={value}
+        onReady={editor => editor.setData(value)}
+        disabled={disabled}
+        onChange={(event, editor) => {
+          const data = editor.getData();
+          onChange({ target: { name, value: data } });
+        }}
+      />
+    </Wrapper>
+  );
+};
+
+Editor.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
+
+export default Editor;
