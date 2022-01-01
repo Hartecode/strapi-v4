@@ -6,6 +6,8 @@ import { Field, FieldLabel, FieldHint, FieldError } from '@strapi/design-system/
 import { Button } from '@strapi/design-system/Button';
 import Editor from './CKEditor';
 import MediaLib from './MediaLib';
+import { useIntl } from 'react-intl';
+import getTrad from '../../utils/getTrad';
 
 const errorBorder = {
   borderColor:"danger600",
@@ -23,6 +25,7 @@ const Wysiwyg = ({
   error,
   required
 }) => {
+  const { formatMessage } = useIntl();
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => setIsOpen(prev => !prev);
   const onClose = () => setIsOpen(false);
@@ -30,12 +33,18 @@ const Wysiwyg = ({
 
   return (
     
-    <Field name={name} error={error}>
+    <Field name={name} error={error ? formatMessage({
+        id: error,
+        defaultMessage:  `${name} error`,
+      }): ''}>
       <Box paddingBottom={4} >
         <Flex justifyContent="space-between">
           <FieldLabel required={required}>{intlLabel.defaultMessage}</FieldLabel>
           <Button onClick={handleToggle}>
-              Add Image
+              {formatMessage({
+                id: getTrad('plugin.button.img.text'),
+                defaultMessage: 'Add Image',
+              })}
           </Button>
         </Flex>
       </Box>
@@ -58,23 +67,6 @@ const Wysiwyg = ({
     </Field>
   )
 }
-
-// attribute: {type: 'richtext'}
-// contentTypeUID: "api::config.config"
-// description: null
-// disabled: false
-// error: null
-// intlLabel: {id: 'Rich_text', defaultMessage: 'Rich_text'}
-// labelAction: undefined
-// multiple: false
-// name: "rich_text"
-// onChange: ƒ (_ref4)
-// options: [{…}]
-// placeholder: null
-// required: false
-// type: "wysiwyg"
-// value: null
-// withDefaultValue: false
 
 Wysiwyg.propTypes = {
   error: PropTypes.string,
