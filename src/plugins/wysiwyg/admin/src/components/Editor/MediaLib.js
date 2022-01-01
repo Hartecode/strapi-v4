@@ -10,39 +10,28 @@ const imgSizes = [
 
 const srcSet = (format) => {
   return imgSizes.reduce((acc, cur) => {
-    return `${acc}${acc ? ', ' :''}${format[cur.size].url} ${cur.bp}`
+    return format[cur.size] ? `${acc}${acc ? ', ' :''}${
+      prefixFileUrlWithBackendUrl(format[cur.size].url)} ${cur.bp}` : '';
   }, '')
 }
 
 
-export default function MediaLib({ isOpen, onClose, onChange }) {
+export default function MediaLib({ isOpen, onClose, onChange, value, name }) {
   const { components } = useLibrary();
   const MediaLibDialog = components['media-library'];
 
-  function handleSelectAssets(files) {
-    // if (!editor) {
-    //   console.error('editor instance not found');
-    //   return;
-    // }
-    const formattedFiles = files.map((f) => ({
-      alt: f.alternativeText || f.name,
-      url: prefixFileUrlWithBackendUrl(f.url),
-      mime: f.mime,
-    }));
+  function handleSelectAssets(filesArray) {
+    const formattedImgs = filesArray.map((file) => {
+      // if not a image then return empty string
+      if (!file.mime.includes('image')) return '';
+      // return a responsive image with native lazy load
+      return `<img src="${prefixFileUrlWithBackendUrl(file.url)}" 
+        srcset="${srcSet(file.formats)}" 
+        alt="${file.alternativeText || file.name}" loading="lazy" />`;
+    }).join('');
 
-    console.log(files, formattedFiles)
-    // formattedFiles.forEach(({ url, alt }) => {
-    //   editor.exec('AddImage', {
-    //     imageUrl: url,
-    //     altText: alt,
-    //   });
-    //   editor.insertText('\n');
-    // });
-    // if (data.mime.includes('image')) {
-    //   const imgTag = `<img src="${data.url}" srcset="${srcSet(data.formats)}" caption="${data.caption}" alt="${data.alternativeText}" loading="lazy"></img>`;
-    //   const newValue = value ? `${value}${imgTag}` : imgTag;
-    //   onChange({ target: { name, value: newValue } });
-    // }
+    const newValue = value ? `${value}${formattedImgs}` : formattedImgs;
+    onChange({ target: { name, value: newValue } });
     onClose();
   }
 
