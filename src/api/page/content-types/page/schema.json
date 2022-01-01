@@ -30,7 +30,8 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "blocks.seo"
+        "blocks.seo",
+        "blocks.script"
       ]
     },
     "parent": {

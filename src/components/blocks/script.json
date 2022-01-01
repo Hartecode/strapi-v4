@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blocks_scripts",
+  "info": {
+    "displayName": "Script",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "text"
+    },
+    "async": {
+      "type": "boolean",
+      "default": false
+    },
+    "defer": {
+      "type": "boolean",
+      "default": true
+    },
+    "doc_head": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
