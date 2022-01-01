@@ -4,7 +4,7 @@
   "description": "This is the description of the plugin.",
   "strapi": {
     "name": "wysiwyg",
-    "description": "Description of wysiwyg plugin",
+    "description": "A replacement for the native wysiwyg plugin",
     "kind": "plugin"
   },
   "dependencies": {
