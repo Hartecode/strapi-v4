@@ -2,7 +2,8 @@
   "collectionName": "components_blocks_scripts",
   "info": {
     "displayName": "Script",
-    "icon": "code"
+    "icon": "code",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -24,6 +25,10 @@
     "doc_head": {
       "type": "boolean",
       "default": false
+    },
+    "code": {
+      "type": "richtext",
+      "default": "<pre><code class=\"language-javascript\">Add Code here </br></br></br></br></code></pre><p>&nbsp;</p><p>&nbsp;</p>"
     }
   }
 }
