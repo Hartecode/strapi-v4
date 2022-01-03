@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@strapi/design-system/Box';
 import { Flex } from '@strapi/design-system/Flex';
+import MediaIcon from '@strapi/icons/PicturePlus';
 import { Field, FieldLabel, FieldHint, FieldError } from '@strapi/design-system/Field';
 import { Button } from '@strapi/design-system/Button';
 import Editor from './CKEditor';
@@ -40,7 +41,11 @@ const Wysiwyg = ({
       <Box paddingBottom={4} >
         <Flex justifyContent="space-between">
           <FieldLabel required={required}>{intlLabel.defaultMessage}</FieldLabel>
-          <Button onClick={handleToggle}>
+          <Button 
+            type="button"
+            startIcon={<MediaIcon />}
+            variant="secondary"
+            onClick={handleToggle}>
               {formatMessage({
                 id: getTrad('plugin.button.img.text'),
                 defaultMessage: 'Add Image',

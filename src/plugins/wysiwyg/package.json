@@ -10,6 +10,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^31.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.3",
+    "ckeditor5-build-strapi-wysiwyg": "^2.0.0-rc.1",
     "styled-components": "^5.3.3"
   },
   "author": {

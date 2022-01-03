@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from "ckeditor5-build-strapi-wysiwyg";
 import styled from 'styled-components';
 
 // add styling here to edit the content look
@@ -16,16 +16,26 @@ const Wrapper = styled.div`
     > .ck.ck-content {
       color: #424242;
     }
+
+    pre {
+        background: black;
+        color: #fff;
+    }
   }
 `;
+
 
 const configuration = {
   toolbar: [
     'heading',
     '|',
+    'alignment', '|',
     'bold',
     'italic',
     'link',
+    'strikethrough',
+    'underline',
+    '|',
     'bulletedList',
     'numberedList',
     '|',
@@ -35,9 +45,19 @@ const configuration = {
     'blockQuote',
     'insertTable',
     'mediaEmbed',
+    'codeBlock',
+    'htmlEmbed',
+    '|',
+    'fullscreen',
     'undo',
     'redo',
   ],
+  codeBlock: {
+    languages: [
+        { language: 'javascript', label: 'JavaScript' },
+        { language: 'html', label: 'HTML' }
+    ]
+}
 };
 
 const Editor = ({ onChange, name, value, disabled }) => {
