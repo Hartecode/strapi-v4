@@ -42,6 +42,7 @@ const configuration = {
     'indent',
     'outdent',
     '|',
+    'specialCharacters',
     'blockQuote',
     'insertTable',
     'mediaEmbed',
