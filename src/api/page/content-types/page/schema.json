@@ -52,6 +52,12 @@
     },
     "static_path": {
       "type": "json"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "pages"
     }
   }
 }
