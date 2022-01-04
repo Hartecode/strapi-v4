@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_blocks_media_blocks",
+  "info": {
+    "displayName": "Media Block",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "template": {
+      "type": "string",
+      "default": "media-block",
+      "required": true
+    },
+    "bgType": {
+      "type": "enumeration",
+      "enum": [
+        "video",
+        "image"
+      ],
+      "required": true
+    },
+    "blackSize": {
+      "type": "enumeration",
+      "enum": [
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ]
+    },
+    "overlayOpacity": {
+      "type": "integer",
+      "max": 0,
+      "min": 100,
+      "default": 20
+    },
+    "bgImg": {
+      "displayName": "Media Image",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.media-image"
+    },
+    "youTubeVideo": {
+      "displayName": "Youtube Video",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.youtube-video"
+    }
+  }
+}

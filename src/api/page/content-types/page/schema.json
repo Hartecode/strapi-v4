@@ -31,7 +31,11 @@
       "type": "dynamiczone",
       "components": [
         "blocks.seo",
-        "blocks.script"
+        "blocks.script",
+        "blocks.text-block",
+        "blocks.deck-block",
+        "blocks.media-block",
+        "blocks.search-sort-block"
       ]
     },
     "parent": {

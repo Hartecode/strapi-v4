@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_blocks_search_sort_blocks",
+  "info": {
+    "displayName": "Search Sort Block",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "template": {
+      "type": "string",
+      "default": "search-sort-block",
+      "required": true
+    },
+    "collection_type": {
+      "type": "enumeration",
+      "enum": [
+        "pages",
+        "articles"
+      ],
+      "required": true
+    },
+    "parent_page": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "blog"
+      ]
+    }
+  }
+}
