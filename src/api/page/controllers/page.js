@@ -1,6 +1,26 @@
 'use strict';
 
 /**
+ * loop through obj and parse value string to boolean
+ * @param {object} obj 
+ */
+const parseObjBooleans = (obj) => {
+  const bool = ['true', 'false'];
+  Object.keys(obj).forEach(key => {
+    if (typeof obj[key] === 'string' && bool.includes(obj[key])) {
+      obj[key] = JSON.parse(obj[key]);
+    }
+
+    if (!Array.isArray(obj[key]) 
+      && typeof obj[key] === 'object'
+      && obj[key] !== null
+    ) {
+      parseObjBooleans(obj[key]);
+    }
+  });
+}
+
+/**
  *  page controller
  */
 
@@ -33,12 +53,13 @@ module.exports = createCoreController('api::page.page', ({ strapi }) =>  ({
     const { slug } = ctx.params;
     const { query } = ctx;
 
-    const entity = await strapi.db.query('api::page.page').findOne({
-      ...query,
-      where: {
-        slug
-      }
-    });
+    if ('where' in query) {
+      query.where = { ...query.where, slug };
+    }
+
+    parseObjBooleans(query)
+
+    const entity = await strapi.db.query('api::page.page').findOne(query);
     const sanitizedEntity = await this.sanitizeOutput(entity, ctx);
 
     return this.transformResponse(sanitizedEntity);
