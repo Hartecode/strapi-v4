@@ -4,7 +4,8 @@
   "info": {
     "singularName": "message",
     "pluralName": "messages",
-    "displayName": "Message"
+    "displayName": "Message",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,19 +14,23 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "email": {
       "type": "email",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "subject": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "message": {
       "type": "text",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     }
   }
 }
