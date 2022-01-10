@@ -4,6 +4,16 @@ module.exports = ({ env }) =>  ({
     enabled: true,
     resolve: './src/plugins/wysiwyg'
   },
+  "cloudflare-publish": {
+    enabled: true,
+    resolve: './src/plugins/cloudflare-publish',
+    config: {
+      accountId: env('CLOUDFLARE_ACCOUNT_ID'),
+      projectName: env('CLOUDFLARE_PROJECT_NAME'),
+      authEmail: env('CLOUDFLARE_AUTH_EMAIL'),
+      authKey: env('CLOUDFLARE_AUTH_KEY')
+    }
+  },
   email: {
     config: {
       provider: 'nodemailer',

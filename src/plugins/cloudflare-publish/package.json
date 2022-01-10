@@ -7,7 +7,9 @@
     "description": "Description of cloudflare-publish plugin",
     "kind": "plugin"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.24.0"
+  },
   "author": {
     "name": "A Strapi developer"
   },

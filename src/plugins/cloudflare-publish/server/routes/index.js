@@ -7,4 +7,20 @@ module.exports = [
       policies: [],
     },
   },
+  {
+    method: "GET",
+    path: "/check",
+    handler: "myController.check",
+    config: {
+      policies: []
+    }
+  },
+  {
+    method: "GET",
+    path: "/publish",
+    handler: "myController.publish",
+    config: {
+      policies: []
+    }
+  }
 ];
