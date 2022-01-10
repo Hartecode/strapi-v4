@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import { Box } from '@strapi/design-system/Box';
-import UploadIcon from '@strapi/icons/PicturePlus';
+import UploadIcon from '@strapi/icons/UploadIcon';
 import { Divider } from '@strapi/design-system/Divider';
 import { Button } from '@strapi/design-system/Button';
 import { BaseHeaderLayout, ContentLayout } from '@strapi/design-system/Layout';
