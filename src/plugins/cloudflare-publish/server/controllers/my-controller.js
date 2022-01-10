@@ -17,8 +17,6 @@ const dateTime = (rawDate) => {
 }
 
 const checkConfig = (configVariables) => {
-  console.log(configVariables)
-
   return Object.keys(configVariables).filter(key => !configVariables[key]);
 }
 
@@ -80,7 +78,6 @@ module.exports = {
           }
         };
       }
-      console.log('was checked');
 
       return ctx.body = {
         numberOfDeploys: data['result_info']['total_count'],

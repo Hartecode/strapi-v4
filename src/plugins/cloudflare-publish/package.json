@@ -1,10 +1,10 @@
 {
   "name": "cloudflare-publish",
   "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "description": "A plugin to easily trigger Cloudflare Pages Deployment from Strapi.",
   "strapi": {
-    "name": "cloudflare-publish",
-    "description": "Description of cloudflare-publish plugin",
+    "name": "Cloudflare Publish",
+    "description": "A plugin to easily trigger Cloudflare Pages Deployment from Strapi.",
     "kind": "plugin"
   },
   "dependencies": {
