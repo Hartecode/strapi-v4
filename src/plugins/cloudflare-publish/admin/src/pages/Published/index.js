@@ -48,7 +48,7 @@ const Published = ({
                 </Typography>
             </Box>
             <Typography fontWeight="bold">
-                {formatMessage({ id: `${pluginId}.home.publish.preview` })}
+                {formatMessage({ id: `${pluginId}.home.publish.preview` }) }
                 <Link href={previewURl} endIcon={<ExternalLink />}>  
                     {previewURl}
                 </Link>
