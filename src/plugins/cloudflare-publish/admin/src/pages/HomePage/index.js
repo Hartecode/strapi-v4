@@ -121,7 +121,9 @@ const HomePage = () => {
         {ready ? (
           busy ? (
             <Flex justifyContent="center">
-              <div>
+              <div style={{
+                textAlign: 'center'
+              }}>
                 <Typography fontWeight="bold" fontSize="md">
                   {formatMessage({ id: `${pluginId}.home.current.status` })} 
                   <span style={{

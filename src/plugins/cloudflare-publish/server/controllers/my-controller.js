@@ -90,12 +90,21 @@ module.exports = {
     }
   },
   async publish (ctx) {
-    const {
+    const accountId = strapi.config.get('plugin.cloudflare-publish.accountId');
+    const projectName = strapi.config.get('plugin.cloudflare-publish.projectName');
+    const authEmail = strapi.config.get('plugin.cloudflare-publish.authEmail');
+    const authKey = strapi.config.get('plugin.cloudflare-publish.authKey');
+
+    const emptyValues = checkConfig({
       accountId,
       projectName,
       authEmail,
       authKey
-    } = strapi.plugins[pluginId].config;
+    });
+    
+    if (emptyValues.length > 0) {
+      return ctx.internalServerError(`The following config variables are required: ${emptyValues.join(',')}`)
+    }
  
     const headers = {
       "X-Auth-Email": authEmail,
