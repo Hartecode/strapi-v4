@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import { Box } from '@strapi/design-system/Box';
+import { Flex } from '@strapi/design-system/Flex';
 import UploadIcon from '@strapi/icons/Upload';
 import { Divider } from '@strapi/design-system/Divider';
 import { Button } from '@strapi/design-system/Button';
@@ -17,11 +18,11 @@ const POLL_INTERVAL = 10000;
 
 const HomePage = () => {
   const { formatMessage } = useIntl();
-  const [ready, setReady] = useState(false);
-  const [publishStatus, setPublishStatus] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [publishData, setPublishData] = useState(null);
-  const [error, setError] = useState(null);
+  const [ ready, setReady ] = useState(false);
+  const [ publishStatus, setPublishStatus ] = useState('');
+  const [ busy, setBusy ] = useState(false);
+  const [ publishData, setPublishData ] = useState(null);
+  const [ errors, setErrors ] = useState([]);
 
   useEffect(() => {
     let timeout;
@@ -48,9 +49,9 @@ const HomePage = () => {
 
         timeout = setTimeout(checkBusy, POLL_INTERVAL);
       } catch(e) {
-        const error = e.json();
-        console.log(error, e.error);
-        setError('Server Error');
+        setErrors(previousState => {
+          return [...previousState, 'Unable to Load Last Published State'];
+        })
         setPublishStatus('failed');
         setBusy(false);
         clearTimeout(timeout);
@@ -68,7 +69,13 @@ const HomePage = () => {
   const triggerPublish = async () => {
     setBusy(true);
     setPublishData(null)
-    const resp = await axiosInstance(`/${pluginId}/publish`)
+    try {
+      const resp = await axiosInstance(`/${pluginId}/publish`)
+    } catch(e) {
+      setErrors(previousState => {
+        return [...previousState, 'Unable to Publish'];
+      })
+    }
   };
 
   const handleClick = () => {
@@ -78,58 +85,64 @@ const HomePage = () => {
     if (ok) triggerPublish();
   };
 
+  const closeAlert = (index) => {
+    setErrors(errs => errs.filter((e, i) => i !== index));
+  }
+
   return (
     <Box background="neutral100"> 
-      {error && (
-        <Alert closeLabel="Close alert" 
-          onClose={() => setError(null)} title="Title" variant="danger">
-          {error}
+      {errors.map((err, i) => (<Alert 
+          key={`${i}alerts`} 
+          closeLabel="Close alert" 
+          onClose={() => closeAlert(i)} title="Error" variant="danger">
+          {err}
         </Alert>
-      )}
+      ))
+      }
     
       <BaseHeaderLayout 
         title={formatMessage({ id: `${pluginId}.home.title` })} 
         subtitle={formatMessage({ id: `${pluginId}.home.description` })} 
         as="h2" />
       <ContentLayout>
+        <Box paddingBottom={4}>
+          <Typography>{formatMessage({ id: `${pluginId}.home.prompt` })}</Typography>
+        </Box>
+        <Button
+          color="primary"
+          startIcon={<UploadIcon />}
+          onClick={handleClick}
+        >
+          {formatMessage({ id: `${pluginId}.home.button.publish` })}
+        </Button>
+        <Box paddingBottom={4} paddingTop={4}>
+          <Divider />
+        </Box>
         {ready ? (
           busy ? (
-            <>
-              <Typography fontWeight="bold" fontSize="md">
-                {formatMessage({ id: `${pluginId}.home.current.status` })} 
-                <span style={{color: '#e2a01d'}}>
-                  {publishStatus}
-                </span>
-              </Typography>
-              <Loader />
-              <Typography>{formatMessage({ id: `${pluginId}.home.busy` })}</Typography>
-            </>
+            <Flex justifyContent="center">
+              <div>
+                <Typography fontWeight="bold" fontSize="md">
+                  {formatMessage({ id: `${pluginId}.home.current.status` })} 
+                  <span style={{
+                    marginLeft: '2px',
+                    color: '#e2a01d'}}>
+                    {publishStatus}
+                  </span>
+                </Typography>
+                <Loader>{formatMessage({ id: `${pluginId}.home.busy` })}</Loader>
+                <Typography>{formatMessage({ id: `${pluginId}.home.busy` })}</Typography>
+              </div>
+            </Flex>
           ) : (
             <>
-              <Box paddingBottom={4}>
-                <Typography>{formatMessage({ id: `${pluginId}.home.prompt` })}</Typography>
-              </Box>
-              <Button
-                color="primary"
-                startIcon={<UploadIcon />}
-                onClick={handleClick}
-              >
-                {formatMessage({ id: `${pluginId}.home.button.publish` })}
-              </Button>
-              <Box paddingBottom={4} paddingTop={4}>
-                <Divider />
-              </Box>
               {publishData && <Published {...publishData}/>}
-
             </>
           )
         ) : (
-          <>
-            <Loader>Loading content...</Loader>
-            <Typography>
-                {formatMessage({ id: `${pluginId}.home.notready` })}
-            </Typography>
-          </>
+          <Flex justifyContent="center">
+            <Loader>{formatMessage({ id: `${pluginId}.home.notready` })}</Loader>
+          </Flex>
         )}
       </ContentLayout>
     </Box>
