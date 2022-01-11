@@ -58,6 +58,9 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "pages"
+    },
+    "publish_at": {
+      "type": "datetime"
     }
   }
 }
