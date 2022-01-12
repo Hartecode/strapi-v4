@@ -1,0 +1,66 @@
+{
+  "collectionName": "components_blocks_text_blocks",
+  "info": {
+    "displayName": "text block",
+    "icon": "file-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "template": {
+      "type": "string",
+      "default": "text-block",
+      "required": true
+    },
+    "rich_text": {
+      "type": "richtext"
+    },
+    "cta": {
+      "displayName": "CTA Button",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.cta-button"
+    },
+    "groupPosition": {
+      "type": "enumeration",
+      "enum": [
+        "center",
+        "start",
+        "end"
+      ]
+    },
+    "colorScheme": {
+      "type": "enumeration",
+      "enum": [
+        "blue",
+        "cyan",
+        "gray",
+        "green",
+        "orange",
+        "pink",
+        "purple",
+        "red",
+        "teal",
+        "yellow",
+        "whiteAlpha",
+        "blackAlpha",
+        "linkedin",
+        "facebook",
+        "messager",
+        "whatsapp",
+        "twitter",
+        "telegram"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "link",
+        "outline",
+        "solid",
+        "ghost",
+        "unstyled"
+      ]
+    }
+  }
+}

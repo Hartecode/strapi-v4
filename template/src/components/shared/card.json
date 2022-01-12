@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_cards",
+  "info": {
+    "displayName": "Card",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.media-image"
+    },
+    "title": {
+      "type": "string"
+    },
+    "copy": {
+      "type": "text"
+    },
+    "link": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.link"
+    }
+  }
+}

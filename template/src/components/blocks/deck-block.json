@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_blocks_deck_blocks",
+  "info": {
+    "displayName": "Deck Block",
+    "icon": "list-ul"
+  },
+  "options": {},
+  "attributes": {
+    "template": {
+      "type": "string",
+      "required": true,
+      "default": "deck-block"
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "rows",
+        "rowsReverse",
+        "alternatingRows",
+        "cards"
+      ]
+    },
+    "alternate": {
+      "type": "enumeration",
+      "enum": [
+        "odds",
+        "evens"
+      ]
+    },
+    "cards": {
+      "displayName": "Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.card"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sub_seo_open_graphs",
+  "info": {
+    "displayName": "openGraph",
+    "icon": "chart-line",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "site_name": {
+      "type": "string"
+    }
+  }
+}
