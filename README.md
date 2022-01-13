@@ -7,6 +7,13 @@ A quick description of your strapi application
 JWT_SECRET=********-****-****-****-*********
 API_TOKEN_SALT=*******************************
 
+DATABASE_HOST=111.0.0.1
+DATABASE_PORT=5432
+DATABASE_NAME=dbname
+DATABASE_USERNAME=******
+DATABASE_PASSWORD=********
+DATABASE_SSL=false
+
 SMTP_HOST=smtp-relay.test.com
 SMTP_PORT=587
 SMTP_USERNAME=*************
