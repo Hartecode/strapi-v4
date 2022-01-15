@@ -7,11 +7,11 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: yarn install
       - run: cd strapi-v4/strapi-v4
       - run: yarn prod-build
