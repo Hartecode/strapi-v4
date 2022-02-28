@@ -18,6 +18,20 @@ module.exports = ({ env }) =>  ({
       },
     },
   },
+  'email-designer': {
+    enabled: true,
+  },
+  navigation: {
+    enabled: true,
+    config: {
+        additionalFields: [],
+        contentTypes: ['api::page.page'],
+        contentTypesNameFields: {
+            'api::page.page': ['label']
+        },
+        allowedLevels: 2,
+    }
+},
   'wysiwyg': {
     enabled: true,
     resolve: './src/plugins/wysiwyg'
