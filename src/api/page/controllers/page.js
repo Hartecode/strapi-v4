@@ -53,9 +53,7 @@ module.exports = createCoreController('api::page.page', ({ strapi }) =>  ({
     const { slug } = ctx.params;
     const { query } = ctx;
 
-    if ('where' in query) {
-      query.where = { ...query.where, slug };
-    }
+    query.where = { ...query.where, slug };
 
     parseObjBooleans(query)
 
