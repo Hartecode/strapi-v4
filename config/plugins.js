@@ -31,7 +31,10 @@ module.exports = ({ env }) =>  ({
         },
         allowedLevels: 2,
     }
-},
+  },
+  seo: {
+    enabled: true,
+  },
   'wysiwyg': {
     enabled: true,
     resolve: './src/plugins/wysiwyg'

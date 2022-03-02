@@ -35,7 +35,9 @@
         "blocks.text-block",
         "blocks.deck-block",
         "blocks.media-block",
-        "blocks.search-sort-block"
+        "blocks.search-sort-block",
+        "shared.seo",
+        "shared.meta-social"
       ]
     },
     "parent": {
@@ -61,6 +63,11 @@
     },
     "publish_at": {
       "type": "datetime"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
